@@ -19,6 +19,8 @@ const queryHandler = (req, res, next) => {
     return res.json(r.rows || [])
   }).catch(next)
 }
+
+//apply ratelimiter middleware for routes 
 app.use(rateLimiter)
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
