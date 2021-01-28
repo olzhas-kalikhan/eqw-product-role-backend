@@ -20,10 +20,7 @@ const queryHandler = (req, res, next) => {
     return res.json(r.rows || [])
   }).catch(next)
 }
-app.use(cors({
-  origin: false,
-  optionsSuccessStatus: 200 
-}))
+app.use(cors())
 //apply ratelimiter middleware for routes 
 app.use(rateLimiter)
 app.get('/', (req, res) => {
