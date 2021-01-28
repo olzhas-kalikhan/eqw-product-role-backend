@@ -3,6 +3,7 @@ require('dotenv').config()
 const pg = require('pg')
 const app = express()
 const rateLimiter = require('./rateLimiter')
+const cors =require('cors')
 // configs come from standard PostgreSQL env vars
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
 
@@ -19,7 +20,10 @@ const queryHandler = (req, res, next) => {
     return res.json(r.rows || [])
   }).catch(next)
 }
-
+app.use(cors({
+  origin: false,
+  optionsSuccessStatus: 200 
+}))
 //apply ratelimiter middleware for routes 
 app.use(rateLimiter)
 app.get('/', (req, res) => {

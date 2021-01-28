@@ -1,8 +1,7 @@
 const moment = require('moment')
 
 const WINDOW_SIZE_IN_MS = 1 * 60 * 1000;
-const MAX_WINDOW_REQUEST_COUNT = 3;
-const WINDOW_LOG_INTERVAL_IN_HOURS = 1;
+const MAX_WINDOW_REQUEST_COUNT = 30;
 
 //local store, can be moved to redis or other 3rd party storage
 const ipStore = {};
