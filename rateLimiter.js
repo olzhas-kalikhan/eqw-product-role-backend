@@ -7,7 +7,7 @@ const WINDOW_LOG_INTERVAL_IN_HOURS = 1;
 
 module.exports = rateLimiter = (req, res, next) => {
     try {
-        var ip = req.ip;
+        var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         console.log(ip)
         next()
     } catch (error) {
